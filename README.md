@@ -158,6 +158,18 @@ rclone copy --interactive FrydmanLabGDrive:  ~/rClone/rClone_FrydmanLabGDrive   
 ```
 Note, you can specify specific folders to sync by adding the folder name after the cloud drive.
 
+> [!WARNING]
+> If you are saving from your Google Drive and it links to an external folder, rClone WILL download that external folder.
+> Try to avoid syncing folders that you do not intend to keep locally by specifying the files you wish to sync.
+> If you have a folder structure that looks like the below:
+> > ```
+> > MyFolder
+> >     MyFile
+> >     MyExternalFolder
+> >         MyOtherFile
+> >         Share link to MyFolder
+> > ```
+> rClone will recurse infinitely and you will have an infinitely large file. Ask me how I learned this!
 
 ### Bisync (Have a local copy synced to cloud and vice versa)
 
