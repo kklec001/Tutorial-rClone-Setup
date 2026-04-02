@@ -3,9 +3,9 @@ This is a tutorial for lab scientists that are unfamiliar with tools like rclone
 Please follow best practices for your institution and always check for the most up-to-date documentation.
 
 Sources:
-1: [https://rclone.org/install/](rclone Installation)
-2: [https://rclone.org/drive/](rclone for Google Drive)
-3: [https://www.addictivetips.com/windows-tips/move-files-from-one-folder-to-another-after-x-days-windows-10/](Windows Automatic Syncing and bat File Creation)
+1: [https://rclone.org/install/](#rclone Installation)
+2: [https://rclone.org/drive/](#rclone for Google Drive)
+3: [https://www.addictivetips.com/windows-tips/move-files-from-one-folder-to-another-after-x-days-windows-10/](#Windows Automatic Syncing and bat File Creation)
 
 ## Generate Directory for File Sync
 ### Linux
