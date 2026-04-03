@@ -143,7 +143,7 @@ alias stanford-gdrive="rclone mount StanfordGDrive: ~/rClone/rClone_StanfordGDri
 
 ## Syncing and Copying
 
-ommands generally follow the below format:
+Commands generally follow the below format:
 rclone <command> source:path dest:path [flags]
 
 Sync Test
@@ -210,6 +210,9 @@ Add the following to your cron job config file.
 ```py
 @reboot /usr/bin/rclone mount FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive --log-file /var/log/rclone-photos.log --log-level INFO
 ```
+
+> [!NOTE]
+> Do not add empty paragraph spaces between commands in the file, you will get an error. The cron file works line by line, so any empty space will be interpreted as a command and it will be flagged.
 
 #### Continuously sync a local copy to google drive (Set up Bisync BEFORE using this)
 
