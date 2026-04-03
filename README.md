@@ -10,7 +10,8 @@ Sources:
 ## Generate Directory for File Sync
 ### Linux
 ```py
-mkdir ~/rClone/rClone_FrydmanLabGDrive    # Generate Directory for Syncing Files
+mkdir ~/rClone/.rClone_FrydmanLabGDrive      # Generate Hidden Directory for Mounting Files
+mkdir ~/rClone/Local_FrydmanLabGDrive        # Generate Directory for Syncing Local Files
 ```
 
 ### Windows
@@ -120,7 +121,7 @@ You will see the following options pop up line by line. These are the reccomenda
 ## Mount rClone at Sync Location
 
 ```py
-rclone mount FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive
+rclone mount FrydmanLabGDrive: ~/rClone/.rClone_FrydmanLabGDrive
 ```
 Note: the ":" after your drive name is important, it tells rClone this is a remote drive.
 This does not create a local copy, instead it treats the data like it is local.
@@ -137,8 +138,8 @@ sudo nano ~/.bashrc
 Paste the following into the file that opens.
 ```py
 # Mounts rClone Google Drives
-alias fry-gdrive="rclone mount FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive"
-alias stanford-gdrive="rclone mount StanfordGDrive: ~/rClone/rClone_StanfordGDrive"
+alias fry-gdrive="rclone mount FrydmanLabGDrive: ~/rClone/.rClone_FrydmanLabGDrive"
+alias stanford-gdrive="rclone mount StanfordGDrive: ~/rClone/.rClone_StanfordGDrive"
 ```
 
 ## Syncing and Copying
@@ -148,19 +149,19 @@ rclone <command> source:path dest:path [flags]
 
 Sync Test
 ```py
-rclone sync --dry-run FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive
+rclone sync --dry-run FrydmanLabGDrive: ~/rClone/Local_FrydmanLabGDrive
 ```
 
 Manual Sync
 ```py
-rclone sync --interactive ~/rClone/rClone_FrydmanLabGDrive FrydmanLabGDrive:      # Sync to Drive
-rclone sync --interactive FrydmanLabGDrive:  ~/rClone/rClone_FrydmanLabGDrive     # Sync from Drive
+rclone sync --interactive ~/rClone/Local_FrydmanLabGDrive FrydmanLabGDrive:      # Sync to Drive
+rclone sync --interactive FrydmanLabGDrive:  ~/rClone/Local_FrydmanLabGDrive     # Sync from Drive
 ```
 
 Manual Copy without Deleting Files
 ```py
-rclone copy --interactive ~/rClone/rClone_FrydmanLabGDrive FrydmanLabGDrive:      # Saves to Drive
-rclone copy --interactive FrydmanLabGDrive:  ~/rClone/rClone_FrydmanLabGDrive     # Saves from Drive
+rclone copy --interactive ~/rClone/Local_FrydmanLabGDrive FrydmanLabGDrive:      # Saves to Drive
+rclone copy --interactive FrydmanLabGDrive:  ~/rClone/Local_FrydmanLabGDrive     # Saves from Drive
 ```
 Note, you can specify specific folders to sync by adding the folder name after the cloud drive.
 
@@ -181,21 +182,22 @@ Note, you can specify specific folders to sync by adding the folder name after t
 
 Set up 2-Way Sync (Must Run before Using Bisync)
 ```py
-rclone bisync FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive --resync    #The '--resnyc' flag is only needed for the first time you run this command for each drive.
+rclone bisync FrydmanLabGDrive: ~/rClone/Local_FrydmanLabGDrive --resync    #The '--resnyc' flag is only needed for the first time you run this command for each drive.
 ```
 
 #### (LINUX ONLY) Set up Cron Job to AUTOMATICALLY sync your files.
 
 Check to see if cron is running
 ```py
-$ service cron status
+service cron status
 ```
 
 If it isn't running, start it.
 ```py
-$ service cron start
-$ service cron status                   # If it's running, proceed.
-$ systemctl enable cron                 # Enable cron to run at start.
+service cron start
+service cron status                   # If it's running, proceed.
+systemctl enable cron                 # Enable cron to run at start.
+sudo systemctl enable cron.service    # Run cron at boot.
 ```
 
 Create a scheduled cron job
@@ -219,8 +221,8 @@ And paste the following in the text editor:
 ```sh
 #!/bin/bash
 for i in {1..5}; do \
-rclone mount FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive --log-file /var/log/rclone-mount-FLGD.log --log-level INFO && \
-rclone mount StanfordGDrive: ~/rClone/rClone_StanfordGDrive --log-file /var/log/rclone-SGD.log --log-level INFO && \                    # Here, I am mounting ANOTHER drive! Two drives!
+rclone mount FrydmanLabGDrive: ~/rClone/.rClone_FrydmanLabGDrive && \
+rclone mount StanfordGDrive: ~/rClone/.rClone_StanfordGDrive && \                    # Here, I am mounting ANOTHER drive! Two drives!
 break || sleep 5; done
 ```
 save and close
@@ -250,7 +252,7 @@ nano ~/rClone/.Scripts/rclone-bisync-FrydmanLabGDrive.sh
 And paste the following in the text editor:
 ```sh
 #!/bin/bash
-rclone bisync FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive --checkers 32 --transfers 8 --fast-list --tpslimit 8 --log-file /var/log/rclone-FRY.log --log-level INFO
+rclone bisync FrydmanLabGDrive: ~/rClone/Local_FrydmanLabGDrive --checkers 32 --transfers 8 --fast-list --tpslimit 8 --log-file /var/log/rclone-FRY.log --log-level INFO
 ```
 
 Add the following to your cron job config file. The below will sync every 5 minutes.
