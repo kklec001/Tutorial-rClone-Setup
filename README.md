@@ -236,7 +236,7 @@ save and close
 Add the following to your cron job config file.
 ```py
 SHELL=/bin/sh                    # Not needed if already added.
-@reboot /rClone/.Scripts/rclone-automount.sh
+@reboot sh /rClone/.Scripts/rclone-automount.sh
 ```
 
 > [!WARNING]
@@ -259,7 +259,7 @@ rclone bisync FrydmanLabGDrive: ~/rClone/Local_FrydmanLabGDrive --checkers 32 --
 Add the following to your cron job config file. The below will sync every 5 minutes.
 ```py
 SHELL=/bin/sh                    # Not needed if already added.
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * ~/rClone/.Scripts/rclone-bisync-FrydmanLabGDrive.sh
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * sh ~/rClone/.Scripts/rclone-bisync-FrydmanLabGDrive.sh
 ```
 
 With cron jobs, those asterisks correspond to the specific timing. If you want to adjust, you can change the values according to your desired timing.
