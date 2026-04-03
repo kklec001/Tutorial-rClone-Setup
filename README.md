@@ -75,7 +75,7 @@ cd && curl -O https://downloads.rclone.org/rclone-current-osx-amd64.zip
 unzip -a rclone-current-osx-amd64.zip && cd rclone-*-osx-amd64
 ```
 
-> Move rClone to $PATH. This wil lask for your password (needs admin privileges).
+Move rClone to $PATH. This will ask for your password (needs admin privileges).
 ```py
 sudo mkdir -p /usr/local/bin
 sudo mv rclone /usr/local/bin/
