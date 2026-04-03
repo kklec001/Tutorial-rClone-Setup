@@ -208,17 +208,14 @@ $ crontab -e                            # A new cron tab will be opened.
 
 Add the following to your cron job config file.
 ```py
-@reboot /usr/bin/rclone mount FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive \ 
---log-file /var/log/rclone-photos.log --log-level INFO
+@reboot /usr/bin/rclone mount FrydmanLabGDrive: ~/rClone/rClone_FrydmanLabGDrive --log-file /var/log/rclone-photos.log --log-level INFO
 ```
 
 #### Continuously sync a local copy to google drive (Set up Bisync BEFORE using this)
 
 Add the following to your cron job config file. The below will sync every 5 minutes.
 ```py
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/bin/rclone bisync ~/rClone/rClone_FrydmanLabGDrive FrydmanLabGDrive: \ 
---checkers 32 --transfers 8 --fast-list --tpslimit 8 \ 
---log-file /var/log/rclone-photos.log --log-level INFO
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/bin/rclone bisync ~/rClone/rClone_FrydmanLabGDrive FrydmanLabGDrive: --checkers 32 --transfers 8 --fast-list --tpslimit 8 --log-file /var/log/rclone-photos.log --log-level INFO
 ```
 
 With cron jobs, those asterisks correspond to the specific timing. If you want to adjust, you can change the values according to your desired timing.
