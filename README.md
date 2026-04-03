@@ -235,6 +235,7 @@ save and close
 
 Add the following to your cron job config file.
 ```py
+SHELL=/bin/sh                    # Not needed if already added.
 @reboot /rClone/.Scripts/rclone-automount.sh
 ```
 
@@ -257,6 +258,7 @@ rclone bisync FrydmanLabGDrive: ~/rClone/Local_FrydmanLabGDrive --checkers 32 --
 
 Add the following to your cron job config file. The below will sync every 5 minutes.
 ```py
+SHELL=/bin/sh                    # Not needed if already added.
 0,5,10,15,20,25,30,35,40,45,50,55 * * * * ~/rClone/.Scripts/rclone-bisync-FrydmanLabGDrive.sh
 ```
 
