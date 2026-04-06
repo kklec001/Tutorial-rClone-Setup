@@ -71,7 +71,7 @@ winget uninstall Rclone.Rclone --force
 
 #### Install Winget
 
-Download the (Winget Dependencies)[https://github.com/microsoft/winget-cli/releases/download/v1.12.350/DesktopAppInstaller_Dependencies.zip] and unzip the folder into your downloads.
+Download the [Winget Dependencies](https://github.com/microsoft/winget-cli/releases/download/v1.12.350/DesktopAppInstaller_Dependencies.zip) and unzip the folder into your downloads.
 
 Open Windows Powershell as an administrator.
 ```bash
@@ -85,7 +85,7 @@ Add-AppxPackage .\Microsoft.VCLibs.140.00_14.0.33519.0_x64.appx
 Add-AppxPackage .\Microsoft.WindowsAppRuntime.1.8_8000.616.304.0_x64.appx
 ```
 
-Via browser, install the (Winget Installer)[https://github.com/microsoft/winget-cli/releases/download/v1.12.350/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle] and (Winget License File)[https://github.com/microsoft/winget-cli/releases/download/v1.12.350/e53e159d00e04f729cc2180cffd1c02e_License1.xml]; save both to your downloads folder.
+Via browser, install the [Winget Installer](https://github.com/microsoft/winget-cli/releases/download/v1.12.350/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle) and [Winget License File](https://github.com/microsoft/winget-cli/releases/download/v1.12.350/e53e159d00e04f729cc2180cffd1c02e_License1.xml); save both to your downloads folder.
 
 Open Windows powershell as an administrator and change your directory to where you downloaded the files.
 ```bash
